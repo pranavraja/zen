@@ -44,7 +44,13 @@ func TestZen(t *testing.T) {
 }
 ```
 
-## How does it output?
+## Output
 
-![](https://dl.dropboxusercontent.com/s/q4md2x1gq55vnrd/mao.png)
+Pass:
+
+![Test passed](http://i.imgur.com/zmkJOTW.png)
+
+Fail:
+
+![Test failure](http://i.imgur.com/CWiy8wi.png)
 
