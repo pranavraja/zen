@@ -54,7 +54,13 @@ func (test *Test) PrintFailingLine(failingLine *failingLine) {
 }
 
 func getFailingLine() (failingLine, error) {
-	_, filename, ln, _ := runtime.Caller(4)
+	_, filename, ln, _ := runtime.Caller(3)
+	// TODO: this is really hacky, need to find a way of not using magic numbers for runtime.Caller
+	// If we are not in a test file, we must still be inside this package,
+	// so we need to go up one more stack frame to get to the test file
+	if !strings.HasSuffix(filename, "_test.go") {
+		_, filename, ln, _ = runtime.Caller(4)
+	}
 
 	bf, err := ioutil.ReadFile(filename)
 
