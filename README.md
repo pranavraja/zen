@@ -48,6 +48,3 @@ func TestZen(t *testing.T) {
 
 ![](https://dl.dropboxusercontent.com/s/q4md2x1gq55vnrd/mao.png)
 
-<!--
-![](https://dl.dropboxusercontent.com/s/77k6n4vxjhgbauf/npmel_36.jpg)
--->
