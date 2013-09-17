@@ -26,3 +26,13 @@ func Desc(t *testing.T, desc string, wrapper func(It)) {
 	})
 
 }
+
+func Setup(before, after func()) func(fn func(Expect)) (func(Expect)) {
+	return func(fn func(Expect)) func(Expect) {
+		before()
+		return func(expect Expect) {
+			fn(expect)
+			after()
+		}
+	}
+}

@@ -54,3 +54,38 @@ Fail:
 
 ![Test failure](http://i.imgur.com/CWiy8wi.png)
 
+
+## Before and After test setup
+
+```go
+package zen
+
+import (
+    "testing"
+    . "github.com/pranavraja/zen"
+)
+
+func TestZen(t *testing.T) {
+    Desc(t, "before and after", func(it It) {
+        count := 0
+
+        before := func() {
+          count++
+        }
+
+        after := func() {
+          count--
+        }
+
+        setup := Setup(before, after)
+
+        it("should execute before and after functions", setup(func(expect Expect) {
+            expect(count).ToEqual(1)
+        }))
+
+        it("should execute before and after functions", setup(func(expect Expect) {
+            expect(count).ToEqual(1)
+        }))
+    })
+}
+```
