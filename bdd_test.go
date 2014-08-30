@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func ExampleDesc(t *testing.T) {
+func TestExampleDesc(t *testing.T) {
 	Desc(t, "Equality", func(it It) {
 		it("any integer should equal itself", func(expect Expect) {
 			expect(1).ToEqual(1)
