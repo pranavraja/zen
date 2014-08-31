@@ -69,3 +69,7 @@ func Setup(before, after func()) func(fn func(Expect)) func(Expect) {
 		}
 	}
 }
+
+func NotImplemented() func(Expect) {
+	return func(expect Expect) { expect(nil).NotImplemented() }
+}

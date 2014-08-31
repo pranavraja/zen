@@ -61,9 +61,7 @@ func TestBddSceneriosUsingContextAndSpecifications(t *testing.T) {
 				expect("hellow").ToNotEqual("world")
 			})
 
-			it("should not have this implemented", func(expect Expect) {
-				expect(nil).NotImplemented()
-			})
+			it("should not have this implemented", NotImplemented())
 		})
 
 		// common context
