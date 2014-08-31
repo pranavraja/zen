@@ -10,6 +10,7 @@ type formatter interface {
 	PrintContext()
 	PrintWhen()
 	PrintTitle()
+	PrintTitleNotImplemented()
 	PrintError(string)
 }
 
@@ -59,4 +60,10 @@ func (self *Expectation) ToExist() {
 
 func (self *Expectation) ToNotExist() {
 	self.To("not exist", NotExist, nil)
+}
+
+func (self *Expectation) NotImplemented() {
+	self.Output.PrintContext()
+	self.Output.PrintWhen()
+	self.Output.PrintTitleNotImplemented()
 }

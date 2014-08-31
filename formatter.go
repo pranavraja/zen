@@ -23,10 +23,11 @@ var lastWhen string
 var lastTitle string
 
 var (
-	reset = "\033[0m"
-	white = "\033[37m\033[1m"
-	grey  = "\x1B[90m"
-	red   = "\033[31m\033[1m"
+	reset  = "\033[0m"
+	white  = "\033[37m\033[1m"
+	grey   = "\x1B[90m"
+	red    = "\033[31m\033[1m"
+	yellow = "\033[43m"
 )
 
 func (test *Test) PrintContext() {
@@ -49,7 +50,15 @@ func (test *Test) PrintTitle() {
 	if lastTitle == test.Title {
 		return
 	}
-	fmt.Printf("\033[37m \033[1m    It %s \n", test.Title)
+	fmt.Printf("\033[37m \033[1m    It %s %s\n", test.Title, reset)
+	lastTitle = test.Title
+}
+
+func (test *Test) PrintTitleNotImplemented() {
+	if lastTitle == test.Title {
+		return
+	}
+	fmt.Printf("\033[37m \033[1m    It %s %s<<-- NOT IMPLEMENTED%s\n", test.Title, yellow, reset)
 	lastTitle = test.Title
 }
 

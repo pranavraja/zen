@@ -27,6 +27,11 @@ func (out *output) PrintWhen() {
 func (out *output) PrintTitle() {
 	out.titlePrinted = true
 }
+
+func (out *output) PrintTitleNotImplemented() {
+	out.titlePrinted = true
+}
+
 func (out *output) PrintError(err string) {
 	out.errors += err
 }
