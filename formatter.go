@@ -16,49 +16,20 @@ type failingLine struct {
 	prev     string
 }
 
-// TODO move these to a per-scenerio structure to allow
-// for concurrent text execution in future Go versions (1.4-ish?)
-var lastContext string
-var lastWhen string
 var lastTitle string
 
 var (
-	reset  = "\033[0m"
-	white  = "\033[37m\033[1m"
-	grey   = "\x1B[90m"
-	red    = "\033[31m\033[1m"
-	yellow = "\033[43m"
+	reset string = "\033[0m"
+	white string = "\033[37m\033[1m"
+	grey  string = "\x1B[90m"
+	red   string = "\033[31m\033[1m"
 )
-
-func (test *Test) PrintContext() {
-	if lastContext == test.Context {
-		return
-	}
-	fmt.Printf("\033[37m \033[1mGiven %s \n", test.Context)
-	lastContext = test.Context
-}
-
-func (test *Test) PrintWhen() {
-	if lastWhen == test.When {
-		return
-	}
-	fmt.Printf("\033[37m \033[1m  When %s \n", test.When)
-	lastWhen = test.When
-}
 
 func (test *Test) PrintTitle() {
 	if lastTitle == test.Title {
 		return
 	}
-	fmt.Printf("\033[37m \033[1m    It %s %s\n", test.Title, reset)
-	lastTitle = test.Title
-}
-
-func (test *Test) PrintTitleNotImplemented() {
-	if lastTitle == test.Title {
-		return
-	}
-	fmt.Printf("\033[37m \033[1m    It %s %s<<-- NOT IMPLEMENTED%s\n", test.Title, yellow, reset)
+	fmt.Printf("\033[37m \033[1m    %s \n", test.Title)
 	lastTitle = test.Title
 }
 

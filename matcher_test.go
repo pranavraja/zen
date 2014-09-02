@@ -10,28 +10,13 @@ func differsByOne(a, b interface{}) bool {
 }
 
 type output struct {
-	contextPrinted bool
-	whenPrinted    bool
-	titlePrinted   bool
-	errors         string
-}
-
-func (out *output) PrintContext() {
-	out.contextPrinted = true
-}
-
-func (out *output) PrintWhen() {
-	out.whenPrinted = true
+	titlePrinted bool
+	errors       string
 }
 
 func (out *output) PrintTitle() {
 	out.titlePrinted = true
 }
-
-func (out *output) PrintTitleNotImplemented() {
-	out.titlePrinted = true
-}
-
 func (out *output) PrintError(err string) {
 	out.errors += err
 }

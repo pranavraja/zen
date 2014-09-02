@@ -7,10 +7,7 @@ import (
 type Expect func(val interface{}) *Expectation
 
 type formatter interface {
-	PrintContext()
-	PrintWhen()
 	PrintTitle()
-	PrintTitleNotImplemented()
 	PrintError(string)
 }
 
@@ -38,8 +35,6 @@ func Exist(a, b interface{}) bool {
 }
 
 func (self *Expectation) To(desc string, match Matcher, value interface{}) {
-	self.Output.PrintContext()
-	self.Output.PrintWhen()
 	self.Output.PrintTitle()
 	if !match(self.Value, value) {
 		self.Output.PrintError(fmt.Sprintf("Expected `%v` to %s `%v`", self.Value, desc, value))
@@ -60,10 +55,4 @@ func (self *Expectation) ToExist() {
 
 func (self *Expectation) ToNotExist() {
 	self.To("not exist", NotExist, nil)
-}
-
-func (self *Expectation) NotImplemented() {
-	self.Output.PrintContext()
-	self.Output.PrintWhen()
-	self.Output.PrintTitleNotImplemented()
 }
